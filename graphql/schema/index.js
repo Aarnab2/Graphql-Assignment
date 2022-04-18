@@ -63,6 +63,8 @@ type RootMutation {
 createUser(inputUser:UserInput): User
 createPost(inputPost:PostInput): Post
 createComment(inputComment:CommentInput): Comment
+deletePostById(postId:String!): Post
+updatePostById(postId:String,postTitle:String): Post
 }
 
 schema {

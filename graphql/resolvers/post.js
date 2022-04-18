@@ -46,5 +46,25 @@ module.exports = {
         } catch (e) {
             console.log(e.message)
         }
+    },
+    deletePostById: async (args) => {
+        try {
+            console.log("postId ", args.postId)
+            const deletedPost = await Post.findByIdAndDelete(args.postId)
+            console.log("deleted post ", deletedPost)
+            return transformPost(deletedPost)
+
+        } catch (e) {
+            console.log(e.message)
+        }
+    },
+    updatePostById: async (args) => {
+        try {
+            const updatedpost = await Post.findByIdAndUpdate(args.postId, { $set: { postTitle: args.postTitle } }, { new: true })
+            console.log("updated post ", updatedpost)
+            return transformPost(updatedpost)
+        } catch (e) {
+            console.log(e.message)
+        }
     }
 }
